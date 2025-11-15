@@ -274,7 +274,7 @@ function ProfileField({ label, name, value, onChange, type = "text" }: any) {
                 name={name}
                 value={value}
                 onChange={onChange}
-                className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-blue-500 focus:outline-none text-black"
+                className="w-full border border-gray-300 rounded-lg px-3 py-3 md:py-2 text-base focus:ring-blue-500 focus:outline-none text-black"
             />
         </div>
     );
@@ -288,7 +288,7 @@ function FileField({ label, name, onChange }: any) {
                 type="file"
                 name={name}
                 onChange={onChange}
-                className="w-full border border-gray-300 rounded-lg p-2 bg-gray-50 text-black"
+                className="w-full border border-gray-300 rounded-lg p-3 md:p-2 bg-gray-50 text-black"
             />
         </div>
     );

@@ -31,7 +31,7 @@ export default async function DashboardPage() {
             <div className="max-w-6xl mx-auto">
 
                 {/* HEADER */}
-                <div className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex items-center justify-between">
+                <div className="bg-white shadow-md rounded-2xl p-6 border border-gray-100 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="flex items-center space-x-4">
                         {/* Client-side avatar with hover upload */}
                         {/* @ts-ignore */}
@@ -44,12 +44,11 @@ export default async function DashboardPage() {
                         </div>
                     </div>
 
-                    <Link
-                        href="/dashboard/profile?edit=1"
-                        className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-all"
-                    >
-                        Edit Profile
-                    </Link>
+                    <div className="flex items-center gap-3">
+                        <Link href="/dashboard/profile?edit=1" className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-all">
+                            Edit Profile
+                        </Link>
+                    </div>
                 </div>
 
                 {/* GRID SECTIONS */}

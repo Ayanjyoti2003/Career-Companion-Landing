@@ -17,6 +17,7 @@ import HeroSection from "./home page/hero section/page";
 export default function LandingPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("");
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -50,26 +51,47 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen flex flex-col bg-gradient-to-b from-white to-gray-50 text-gray-800">
       {/* 🌐 Navbar */}
-      <nav className="flex justify-between items-center px-8 py-4 shadow-sm bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <Link href={"/#hero"} className="text-2xl font-bold text-blue-600">Career-Companion</Link>
-        <div className="space-x-6 text-sm font-medium">
-          <Link href="#features" className="hover:text-blue-600">
-            Features
-          </Link>
-          <Link href="#how" className="hover:text-blue-600">
-            How It Works
-          </Link>
-          <Link href="#contact" className="hover:text-blue-600">
-            Contact
-          </Link>
-          <Link
-            href="/signin"
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all"
+      <nav className="flex justify-between items-center px-4 md:px-8 py-4 shadow-sm bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div className="flex items-center gap-4">
+          <Link href={"/#hero"} className="text-2xl font-bold text-blue-600">Career-Companion</Link>
+        </div>
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <Link href="#features" className="hover:text-blue-600">Features</Link>
+          <Link href="#how" className="hover:text-blue-600">How It Works</Link>
+          <Link href="#contact" className="hover:text-blue-600">Contact</Link>
+          <Link href="/signin" className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-all">Get Started</Link>
+        </div>
+
+        {/* Mobile menu button */}
+        <div className="md:hidden">
+          <button
+            aria-label="Open menu"
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 rounded-md border border-gray-200 bg-white"
           >
-            Get Started
-          </Link>
+            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
       </nav>
+
+      {/* Mobile menu dropdown */}
+      <div className={`${mobileOpen ? "block" : "hidden"} md:hidden bg-white/90 shadow-sm border-b border-gray-100`}>
+        <div className="px-4 py-3 space-y-2">
+          <Link href="#features" className="block py-2 hover:text-blue-600">Features</Link>
+          <Link href="#how" className="block py-2 hover:text-blue-600">How It Works</Link>
+          <Link href="#contact" className="block py-2 hover:text-blue-600">Contact</Link>
+          <Link href="/signin" className="block py-2 bg-blue-600 text-white px-3 rounded-md text-center">Get Started</Link>
+        </div>
+      </div>
 
       {/* 💡 Hero Section */}
       <HeroSection />
